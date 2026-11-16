@@ -1,0 +1,8 @@
+description: Papel proxy reverso e frontend estatico
+config:
+    cloud-init.user-data: |
+      #cloud-config
+      package_update: true
+      packages:
+        - nginx
+        - openssl

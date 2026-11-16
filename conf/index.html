@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Tarefas</title>
+</head>
+<body>
+  <h1>Tarefas</h1>
+
+  <input id="titulo" placeholder="Nova tarefa">
+  <button onclick="criar()">Adicionar</button>
+
+  <ul id="lista"></ul>
+
+  <script>
+    async function carregar() {
+      const r = await fetch('/api/tarefas');
+      const tarefas = await r.json();
+
+      document.getElementById('lista').innerHTML = tarefas
+        .map(t => '<li>' + t.titulo + (t.feita ? ' (feita)' : '') + '</li>')
+        .join('');
+    }
+
+    async function criar() {
+      const campo = document.getElementById('titulo');
+
+      await fetch('/api/tarefas', {
+        method: 'POST',
+        body: JSON.stringify({titulo: campo.value})
+      });
+
+      campo.value = '';
+      carregar();
+    }
+
+    carregar();
+  </script>
+</body>
+</html>

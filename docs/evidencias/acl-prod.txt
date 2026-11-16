@@ -1,0 +1,14 @@
+name: acl-prod
+description: ""
+egress:
+- action: drop
+  destination: 10.10.20.0/24
+  state: enabled
+ingress:
+- action: drop
+  source: 10.10.20.0/24
+  state: enabled
+config: {}
+used_by:
+- /1.0/networks/net-prod
+project: default

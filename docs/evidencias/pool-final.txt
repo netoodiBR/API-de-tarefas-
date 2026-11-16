@@ -1,0 +1,9 @@
+info:
+  description: ""
+  driver: dir
+  name: pool-final
+  space used: 7.13GiB
+  total space: 38.09GiB
+used by:
+  volumes:
+  - vol-db (project "final-equipe10")
